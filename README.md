@@ -12,6 +12,7 @@
 
 <p align="center">
 <img width="500" src="./docs/img/prometheus_architecture.png"  />
+Source: [prometheus.io](https://prometheus.io/docs/introduction/overview/)
 </p>
 
 ## Configuring of Tensorflow Serving ModelServer
