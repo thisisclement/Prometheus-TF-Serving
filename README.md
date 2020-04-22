@@ -2,22 +2,22 @@
 
 
 #### Contents
-- [Ideal architecture](https://github.com/thisisclement/portfolio#ideal-architecture)
-- [Tensorflow Serving configuration](https://github.com/thisisclement/portfolio#configuring-of-tensorflow-serving-modelserver)
-- [Prometheus configuration](https://github.com/thisisclement/portfolio#Installation-and-configuration-of-Prometheus)
-- [Graphana configuration](https://github.com/thisisclement/portfolio#Installation-and-configuration-of-Graphana)
+- [Ideal architecture](https://github.com/thisisclement/Prometheus-TF-Serving#ideal-architecture)
+- [Tensorflow Serving configuration](https://github.com/thisisclement/Prometheus-TF-Serving#configuring-of-tensorflow-serving-modelserver)
+- [Prometheus configuration](https://github.com/thisisclement/Prometheus-TF-Serving#Installation-and-configuration-of-Prometheus)
+- [Graphana configuration](https://github.com/thisisclement/Prometheus-TF-Serving#Installation-and-configuration-of-Graphana)
 ---
 
 ## Ideal architecture
 
 <p align="center">
-<img width="500" src="./img/prometheus_architecture.png"  />
+<img width="500" src="./docs/img/prometheus_architecture.png"  />
 </p>
 
 ## Configuring of Tensorflow Serving ModelServer
 You need to configure the ModelServer to expose the monitoring endpoint.
 
-To do that you need to ensure that while running your docker image at first, you need to add a `--monitoring_config_file=<path to monitoring config file>/monitoring_config.conf` to your docker command. 
+To do that you need to ensure that while running your docker image at first, you need to add a `--monitoring_config_file=<path to monitoring config file>/monitoring_config.conf` to your docker command.
 
 Example command with other options:
 ```sh
@@ -289,11 +289,11 @@ Let's verify that the monitoring metrics are exposed by going to `http://localho
 # TYPE :tensorflow:serving:request_example_count_total counter
 # TYPE :tensorflow:serving:request_example_counts histogram
 # TYPE :tensorflow:serving:request_log_count counter
-``` 
+```
 
 Once that is done you can then setup the Prometheus docker container.
 
-## Installation and configuration of Prometheus 
+## Installation and configuration of Prometheus
 
 ### Prometheus config file
 Prometheus runs the service with a config file that you specify so that it knows where to pull the logs from. Specify the correct container IP address of the TF Serving container in `- targets:  `.
@@ -316,7 +316,7 @@ scrape_configs:
 More info on configuration [here|https://prometheus.io/docs/prometheus/latest/configuration/configuration/#scrape_config].
 
 ### Run docker image and using config file
-Run the following docker command in the folder of where `prometheus.yml` is to get the latest Prometheus image from Docker Hub. 
+Run the following docker command in the folder of where `prometheus.yml` is to get the latest Prometheus image from Docker Hub.
 
 ```sh
 docker run -d -p 9090:9090 -v $PWD/prometheus.yml:/etc/prometheus/prometheus.yml prom/prometheus
