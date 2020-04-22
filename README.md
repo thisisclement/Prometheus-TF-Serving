@@ -13,7 +13,8 @@
 <p align="center">
 <img width="500" src="./docs/img/prometheus_architecture.png"  />
 </p>
-Source: https://prometheus.io/docs/introduction/overview/
+
+<div align="center">Source: https://prometheus.io/docs/introduction/overview/</div>
 
 ## Configuring of Tensorflow Serving ModelServer
 You need to configure the ModelServer to expose the monitoring endpoint.
