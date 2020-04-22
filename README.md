@@ -23,7 +23,7 @@ Example command with other options:
 ```sh
 docker run -d -p 8500:8500 -p 8501:8501 --mount type=bind,source=/Users/clementow/docker/monitored,target=/models/bert --mount type=bind,source=/Users/clementow/docker/modelServerConfig,target=/models/modelServerConfig -t --entrypoint=tensorflow_model_server tensorflow/serving --rest_api_port=8501 --model_config_file=models/modelServerConfig/config.conf --monitoring_config_file=/models/modelServerConfig/monitoring_config.conf --model_config_file_poll_wait_seconds=60 --allow_version_labels_for_unavailable_models=true
 ```
-More info on the monitoring_config_file option [here|.
+More info on the monitoring_config_file option [here](https://www.tensorflow.org/tfx/serving/serving_config#monitoring_configuration).
 
 Let's verify that the monitoring metrics are exposed by going to `http://localhost:8501/monitoring/prometheus/metrics`. You should see an example output like so:
 ```
@@ -313,7 +313,7 @@ scrape_configs:
    metrics_path: 'monitoring/prometheus/metrics'
 ```
 
-More info on configuration [here|https://prometheus.io/docs/prometheus/latest/configuration/configuration/#scrape_config].
+More info on configuration [here](https://prometheus.io/docs/prometheus/latest/configuration/configuration/#scrape_config).
 
 ### Run docker image and using config file
 Run the following docker command in the folder of where `prometheus.yml` is to get the latest Prometheus image from Docker Hub.
